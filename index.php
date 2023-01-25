@@ -9,6 +9,7 @@ Create un file index.php in cui:
 
 <?php
 
+
 class Movie
 {
 
@@ -16,9 +17,9 @@ class Movie
     public $title;
     public $rate;
     public $language;
-    public $category;
+    public array $category;
 
-    public function __construct($title, $rate, $language, $category)
+    public function __construct($title, $rate, $language, array $category)
     {
 
         $this->title = $title;
@@ -32,18 +33,20 @@ class Movie
         echo "<h1>" . $this->title . "</h1>";
         echo "<div>recensione: " . $this->rate . "</div>";
         echo "<div>lingua: " . $this->language . "</div>";
-        echo "<div>categoria: " . $this->category . "</div>";
-        // return $this->title
-        //     . $this->rate
-        //     . $this->language;
+        echo "<div>categoria: ";
+        foreach ($this->category as $categoria) {
+            echo  $categoria . " ";
+        }
+        echo "</div>";
     }
 }
 
 
+
 // COSTRUISCO il movie1
-$movie1 = new Movie("Matrix", "sni, un po' noioso", "English", "action");
+$movie1 = new Movie("Matrix", "sni, un po' noioso", "English", ["Sci-fi", "Passion"]);
 // COSTRUISCO il movie2
-$movie2 = new Movie("Titanic", "vabbè, fa il suo", "English", "love");
+$movie2 = new Movie("Titanic", "vabbè, fa il suo", "English", ["Passion", "Sci-fi"]);
 
 
 
